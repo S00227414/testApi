@@ -1,0 +1,19 @@
+/* src/Weather.css */
+.weather-card {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 16px;
+    margin-bottom: 16px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+  }
+  
+  .weather-card h2 {
+    margin-bottom: 8px;
+    font-size: 1.2rem;
+  }
+  
+  .weather-card p {
+    margin: 6px 0;
+  }
+  
