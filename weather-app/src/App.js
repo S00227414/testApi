@@ -1,11 +1,12 @@
-// src/App.js
 import React from 'react';
-import Weather from './Weather';
+import './App.css'; // Import your CSS file
+import Homepage from './HomePage'; // Import the Homepage component
 
 function App() {
   return (
     <div className="App">
-      <Weather />
+      {/* Render the Homepage component */}
+      <Homepage />
     </div>
   );
 }

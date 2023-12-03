@@ -1,9 +1,9 @@
-// src/Weather.js
 import React, { useState, useEffect } from 'react';
 import './weather.css'; // Import the CSS file
 
 const Weather = () => {
   const [weatherData, setWeatherData] = useState(null);
+  const desiredStation = 'Gurteen'; // Change this variable as needed
 
   useEffect(() => {
     const fetchData = async () => {
@@ -20,23 +20,28 @@ const Weather = () => {
     fetchData();
   }, []);
 
+  // Find the station with the desired name
+  const selectedStation = weatherData?.find(station => station['@name'] === desiredStation);
+
   return (
     <div>
       <h1>Weather Data</h1>
-      {/* Display fetched data here */}
-      <div className="weather-cards">
-        {weatherData &&
-          weatherData.map((station, index) => (
-            <div className="weather-card" key={index}>
-              <h2>{station['@name']}</h2>
-              <p>Temperature: {station.temp['#text']} {station.temp['@unit']}</p>
-              <p>Rain: {station.rain['#text']} {station.rain['@unit']}</p>
-              {/* Add more fields as needed */}
-            </div>
-          ))}
-      </div>
+      {/* Display fetched data for the desired station */}
+      {selectedStation && (
+        <div className="weather-card">
+          <h2>{selectedStation['@name']}</h2>
+          <p>Temperature: {selectedStation.temp['#text']} {selectedStation.temp['@unit']}</p>
+          <p>Rain: {selectedStation.rain['#text']} {selectedStation.rain['@unit']}</p>
+          <p>Sunshine: {selectedStation.sun ? selectedStation.sun['@units'] : 'N/A'}</p>
+          <p>Soil Temperature: {selectedStation.soil['#text']} {selectedStation.soil['@units']}</p>
+          <p>Wind Speed: {selectedStation.wind['#text']} {selectedStation.wind['@units']}</p>
+          <p>Radiation: {selectedStation.radiation['#text']} {selectedStation.radiation['@units']}</p>
+          {/* Display other fields as needed */}
+        </div>
+      )}
     </div>
   );
 };
 
 export default Weather;
+
