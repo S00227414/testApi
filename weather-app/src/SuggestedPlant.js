@@ -66,7 +66,9 @@ const SuggestedPlant = () => {
       {selectedPlant && (
         <div>
           <h2>{selectedPlant.name}</h2>
+          <img src={selectedPlant.plants} alt={selectedPlant.name} height={150} width={150}/>
           <p>Description: {selectedPlant.description}</p>
+          <p>Grow time: {selectedPlant.growtime}</p>
           {/* Display other plant details as needed */}
         </div>
       )}
